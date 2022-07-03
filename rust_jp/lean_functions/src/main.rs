@@ -5,5 +5,11 @@ fn main() {
         x + 1
     };
 
-    println!("value is {}", y);
+    let number = if y == 4 {
+        "4です"
+    } else {
+        "４ではありません"
+    };
+
+    println!("value is {}", number);
 }
