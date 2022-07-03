@@ -1,10 +1,9 @@
 fn main() {
-    println!("Hello, world!");
+    let y = {
+        let x = 3;
+        // 行末に;をつけるとstatementとして評価されるため、コンパイルエラーになる
+        x + 1
+    };
 
-    another_functions(5);
-}
-
-fn another_functions(x: i32) {
-    println!("Another functinos");
-    println!("The value of x is {}", x);
+    println!("value is {}", y);
 }
