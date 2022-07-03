@@ -1,15 +1,13 @@
 fn main() {
-    let y = {
-        let x = 3;
-        // 行末に;をつけるとstatementとして評価されるため、コンパイルエラーになる
-        x + 1
-    };
+    let a = [10, 20, 30, 40, 50];
 
-    let number = if y == 4 {
-        "4です"
-    } else {
-        "４ではありません"
-    };
+    for element in &a {
+        println!("the value is: {}", element);
+    }
 
-    println!("value is {}", number);
+    println!("カウントダウン");
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+    println!("Bom!!!");
 }
