@@ -1,9 +1,9 @@
 fn main() {
-    for num in 0..100 {
-        // 0 <= num < 100
-        let fizzbuzz = fizzbuzz(num);
-        println!("{}", fizzbuzz);
-    }
+    let result = (0..100)
+        .map(fizzbuzz)
+        .fold(String::from(""), |acc, line| format!("{}\n{}", acc, line));
+
+    println!("{}", result);
 }
 
 fn fizzbuzz(num: i32) -> String {
