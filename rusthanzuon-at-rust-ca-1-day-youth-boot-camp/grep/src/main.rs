@@ -1,5 +1,6 @@
 use std::fs::read_to_string;
 
+use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use structopt::StructOpt;
 
 #[derive(StructOpt)]
@@ -20,12 +21,13 @@ fn grep(content: &str, pattern: &str, path: &str) {
 }
 
 fn run(state: GrepArgs) {
-    for path in state.path.iter() {
-        match read_to_string(path) {
-            Ok(content) => grep(&content, &state.pattern, path),
+    state
+        .path
+        .par_iter()
+        .for_each(|file| match read_to_string(file) {
+            Ok(content) => grep(&content, &state.pattern, file),
             Err(reason) => println!("{}", reason),
-        }
-    }
+        })
 }
 
 fn main() {
